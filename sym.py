@@ -11,6 +11,7 @@ class Simulator:
         while True:
             self.angle = self.angle + self.stder()
             self.correction = self.corect()
+            self.angle -= self.correction
             self.printData()
             
             time.sleep(1)
