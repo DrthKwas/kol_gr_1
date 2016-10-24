@@ -3,20 +3,20 @@
 import random
 import time
 
-class Simulator:
+class Simulator(object):
     def __init__(self):
         self.angle = 0
         
     def run(self):
         while True:
             self.angle = self.angle + self.stder()
-            self.correction = self.corect()
+            self.correction = self.correct()
             self.angle -= self.correction
             self.printData()
             
             time.sleep(1)
             
-    def corect(self):
+    def correct(self):
         return 0.66 * self.angle 
         
     def printData(self):
@@ -26,5 +26,9 @@ class Simulator:
     def stder(self):
         return random.gauss(-1,1)
         
-sim = Simulator()
-sim.run()
+if __name__ == "__main__":
+        
+    sim = Simulator()
+    sim.run()
+    
+    #rozdzielić do dwóch plików
