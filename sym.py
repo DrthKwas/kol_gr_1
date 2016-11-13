@@ -2,31 +2,29 @@
 import random
 import time
 
+from plane import Plane
+
 
 class Simulator(object):
     def __init__(self):
-        self.angle = 0
+        self.plane = Plane()
+        self.correction = 0
 
     def run(self):
         while True:
-            self.angle = self.angle + self.stder()
+            self.plane.angle += self.stder()
             self.correction = self.correct()
-            self.angle -= self.correction
+            self.plane.angle -= self.correction
             self.print_data()
 
             time.sleep(1)
 
     def correct(self):
-        return 0.66 * self.angle
+        return 0.66 * self.plane.angle
 
     def print_data(self):
-        print("\nAngle: " + str(self.angle))
+        print("\nAngle: " + str(self.plane.angle))
         print("Correction: " + str(self.correction))
 
     def stder(self):
         return random.gauss(-1, 1)
-
-
-if __name__ == "__main__":
-    sim = Simulator()
-    sim.run()
